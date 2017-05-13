@@ -1,0 +1,117 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	/*背景颜色*/
+	background-color: #eeeeee;
+}
+
+.container {
+	/*内容宽度和高度*/
+	width: 960px;
+	height: 450px;
+	/*容器外边距top right bottom left: 60px auto 60px auto*/
+	margin: 60px auto;
+	/*相对定位:相对于文档流中的原始位置定位*/
+	position: relative;
+}
+
+.pic {
+	width: 150px;
+}
+
+.container img:hover {
+	/*设置阴影效果*/
+	box-shadow: 15px 15px 20px rgba(50, 50, 50, 0.4);
+	transform: rotate(0deg) scale(1.20);
+	-webkit-transform: rotate(0deg) scale(1.20);
+	/*显示优先级*/
+	z-index: 2;
+}
+
+.container img {
+	/*设置内边距为10px 10px 15px 10px*/
+	padding: 10px 10px 15px;
+	/*设置背景为白色*/
+	background: white;
+	/*边框宽度1px 用#ddd颜色填充*/
+	border: 1px solid #ddd;
+	/*设置阴影*/
+	box-shadow: 2px 2px 3px rgba(50, 50, 50, 0.4);
+	/*设置动画*/
+	-webkit-transition: all 0.5s ease-in;
+	-moz-transition: all 0.5s ease-in;
+	-ms-transition: all 0.5s ease-in;
+	-o-transition: all 0.5s ease-in;
+	transition: all 0.5s ease-in;
+	/*绝对定位*/
+	position: absolute;
+	z-index: 1;
+}
+
+/*设置图片位置.pic1到.pic4的top为0,则都在第一排.其余在第二排*/
+.pic1 {
+	left: 0px;
+	top: 0;
+	/*属性transform的属性值为roate,即设置旋转角度.正为顺时针,负为逆时针*/
+	transform: rotate(-5deg);
+	-webkit-transform: rotate(-5deg);
+}
+
+.pic2 {
+	left: 200px;
+	top: 0;
+	transform: rotate(-20deg);
+	-webkit-transform: rotate(-20deg);
+}
+
+.pic3 {
+	left: 400px;
+	top: 0;
+	transform: rotate(5deg);
+	-webkit-transform: rotate(5deg);
+}
+
+.pic4 {
+	left: 600px;
+	top: 0;
+	transform: rotate(-10deg);
+	-webkit-transform: rotate(-10deg);
+}
+
+.pic5 {
+	left: 0px;
+	bottom: 50px;
+	top: 200px;
+	transform: rotate(-10deg);
+	-webkit-transform: rotate(-10deg);
+}
+.pic6 {
+	left: 300px;
+	top: 200px;
+	transform: rotate(10deg);
+	-webkit-transform: rotate(10deg);
+}
+.pic7 {
+	left: 500px;
+	top: 200px;
+	transform: rotate(20deg);
+	-webkit-transform: rotate(20deg);
+}
+
+.pic8 {
+	left: 700px;
+	bottom: -20px;
+	top: 200px;
+	transform: rotate(5deg);
+	-webkit-transform: rotate(5deg);
+}
+.pic9 {
+	left: 900px;
+	bottom: 550px;
+	top: 200px;
+	transform: rotate(15deg);
+	-webkit-transform: rotate(15deg);
+}
