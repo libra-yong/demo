@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>回到顶部</title>
+	<style>
+		#backToTop {
+			width: 50px;
+			height: 50px;
+			background: #9f9f9f url(imgs/back-to-top.gif) no-repeat;
+			display: none;
+			/*display: block;*/
+
+			/*然让元素始终保持在页面右下角*/
+			/*固定定位(绝对定位的一种):相对于浏览器窗口定位,绝对定位是相对于已定位的祖先元素定位*/
+			position: fixed;
+			right: 50px;
+			bottom: 50px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body style="height: 2000px">
+	<h1>回到顶部</h1>
+	<div id="backToTop"></div>
+	<script>
+		window.onload = function() {
+
+			//浏览器兼容
+			var doc = document.documentElement || document.body;
+
+			//获取“返回顶部”块
+			var backToTop = document.getElementById("backToTop");
+			var scrollTop;
+
+			//鼠标滚动事件
+			window.onscroll = function() {
+
+				//获取被隐藏在内容区域上方的像素数
+				scrollTop = doc.scrollTop;
+
+				//若有隐藏在内容区域上方的元素，则将“返回顶部”按钮设置为可见
+				if (scrollTop > 0) {
+					backToTop.style.display = "block";
+				} else {
+					backToTop.style.display = "none";
+				}
+			}
+
+			//我刚开始时时这样写的,太僵硬
+			// backToTop.onclick = function() {
+			// 	doc.scrollTop = 0;
+			// };
+
+			/*
+				以下下来源张鑫旭博客http://www.zhangxinxu.com/wordpress/?p=5875
+			*/
+			// requestAnimationFrame的兼容处理
+			if (!window.requestAnimationFrame) {
+			    requestAnimationFrame = function(fn) {
+			        setTimeout(fn, 17);
+			    };	
+			}
+			// 滚动到顶部缓动实现
+			// rate表示缓动速率，默认是2
+			var toTop = function (rate) {
+			    var scrollTop = doc.scrollTop;
+			    
+			    var top = function () {
+			        scrollTop = scrollTop + (0 - scrollTop) / (rate || 2);
+			        
+			        // 临界判断，终止动画
+			        if (scrollTop < 1) {
+			            doc.scrollTop = 0;
+			            return;
+			        }
+			        doc.scrollTop = scrollTop;
+			        // 动画
+			        requestAnimationFrame(top);    
+			    };
+			    top();
+			};
+			//绑定事件
+			backToTop.onclick = function() {
+				toTop(4);
+			}
+		}
+	</script>
+</body>
+</html>
